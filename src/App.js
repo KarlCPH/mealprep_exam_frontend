@@ -28,7 +28,7 @@ function LogIn({login}) {
 }
 
 function LoggedIn({user}) {
-	const [dataFromServer, setDataFromServer] = useState("Loading...");
+	const [dataFromServer, setDataFromServer] = useState();
 
 	useEffect(() => {
 		facade.fetchData(user).then(data => setDataFromServer(data.msg));
@@ -52,7 +52,7 @@ const ApiData = ({user}) => {
 
 	return (
 		<div>
-			<h3 className={"mt-5"}>Api Spam:</h3>
+			<h3 className={"mt-5"}>All recipes:</h3>
 			<p>{apiData.map((data, index) => <li key={index}>{data.substring(0, 30)}...</li>)}</p>
 		</div>
 	)
@@ -60,7 +60,7 @@ const ApiData = ({user}) => {
 };
 
 const Welcome = () => {
-	return "Welcome";
+	return "Welcome to this mealprep application!";
 };
 
 const Header = ({loggedIn}) => {
@@ -73,6 +73,7 @@ const Header = ({loggedIn}) => {
 function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [user, setUser] = useState("");
+	const [apiData, setApiData] = useState([]);
 
 	const logout = () => {
 		facade.logout();

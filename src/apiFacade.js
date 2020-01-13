@@ -33,7 +33,7 @@ function apiFacade() {
 
 	const fetchData = (user) => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(backend + "/api/info/" + user, options).then(handleHttpErrors);
+		return fetch(backend + "/api/recipes/global" + user, options).then(handleHttpErrors);
 	};
 
 	const fetchApiData = () => {
